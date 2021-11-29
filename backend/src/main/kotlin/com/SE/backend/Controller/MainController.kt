@@ -31,5 +31,4 @@ class MainController {
     fun getUserList(): List<User>{
         return showMapper.getUserList()
     }
-
 }
