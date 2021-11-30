@@ -5,40 +5,40 @@ CREATE TABLE owner(
 		onum INT AUTO_INCREMENT,
 		id VARCHAR(100),
 		pw VARCHAR(100),
-		name VARCHAR(100),
+		oname VARCHAR(100),
 		PRIMARY KEY(onum));
+
+CREATE TABLE region(
+		rid INT AUTO_INCREMENT,
+		rname VARCHAR(100),
+		stage INT,
+		PRIMARY KEY(rid));
 
 CREATE TABLE shop(
 		sid INT AUTO_INCREMENT,
 		bussinessType VARCHAR(100),
 		sname VARCHAR(100),
-		location VARCHAR(100),
+		rid INT,
 		maxPeople INT,
-		limitPeople INT,
 		onum INT,
-		PRIMARY KEY(SID),
-		foreign key (onum) references owner(onum) on update cascade on delete cascade);
+		PRIMARY KEY(sid),
+		FOREIGN KEY (rid) references region(rid),
+		FOREIGN KEY (onum) references owner(onum) on update cascade on delete cascade);
 
-CREATE TABLE distance(
-		did INT AUTO_INCREMENT,
-		location VARCHAR(100),
-		stage INT,
-		parameter FLOAT,
-		PRIMARY KEY(did));
+INSERT INTO region(rname, stage) VALUES ('Seoul', 3);
+INSERT INTO region(rname, stage) VALUES ('Daejeon', 3);
+INSERT INTO region(rname, stage) VALUES ('Daegu', 2);
+INSERT INTO region(rname, stage) VALUES ('Busan', 3);
+INSERT INTO region(rname, stage) VALUES ('Gwangju', 2);
+INSERT INTO region(rname, stage) VALUES ('Ulsan', 2);
+INSERT INTO region(rname, stage) VALUES ('Jeju', 1);
 
-INSERT INTO owner(id, pw, name) VALUES ('dong', '1234', 'ldh');
-INSERT INTO owner(id, pw, name) VALUES ('oh', '1234', 'ohg');
-INSERT INTO owner(id, pw, name) VALUES ('soo', '1234', 'cjs');
+INSERT INTO owner(id, pw, oname) VALUES ('dong', '1234', 'ldh');
+INSERT INTO owner(id, pw, oname) VALUES ('oh', '1234', 'ohg');
+INSERT INTO owner(id, pw, oname) VALUES ('soo', '1234', 'cjs');
 
-INSERT INTO shop(bussinessType, sname, location, maxPeople, onum) VALUES ('academy', 'etoos', 'sejong', 30, 1);
-INSERT INTO shop(bussinessType, sname, location, maxPeople, onum) VALUES ('gym', 'healchang', 'seoul', 50, 2);
-INSERT INTO shop(bussinessType, sname, location, maxPeople, onum) VALUES ('bar', 'Daebak', 'busan', 20, 2);
-INSERT INTO shop(bussinessType, sname, location, maxPeople, onum) VALUES ('restaurant', 'Starbucks', 'daejeon', 20, 2);
+INSERT INTO shop(bussinessType, sname, rid, maxPeople, onum) VALUES ('academy', 'etoos', 1, 30, 1);
+INSERT INTO shop(bussinessType, sname, rid, maxPeople, onum) VALUES ('gym', 'healchang', 3, 50, 2);
+INSERT INTO shop(bussinessType, sname, rid, maxPeople, onum) VALUES ('bar', 'Daebak', 7, 20, 2);
+INSERT INTO shop(bussinessType, sname, rid, maxPeople, onum) VALUES ('restaurant', 'Starbucks', 2, 20, 2);
 
-INSERT INTO distance(location, stage, parameter) VALUES ('seoul', 3, 0.25);
-INSERT INTO distance(location, stage, parameter) VALUES ('gyeungi', 3, 0.25);
-INSERT INTO distance(location, stage, parameter) VALUES ('daejeon', 2, 0.5);
-INSERT INTO distance(location, stage, parameter) VALUES ('daegu', 3, 0.25);
-INSERT INTO distance(location, stage, parameter) VALUES ('sejong', 2, 0.5);
-INSERT INTO distance(location, stage, parameter) VALUES ('busan', 2, 0.5);
-INSERT INTO distance(location, stage, parameter) VALUES ('jeju', 1, 0.7);

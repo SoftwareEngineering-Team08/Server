@@ -1,6 +1,6 @@
 package com.SE.backend.Controller
 
-import com.SE.backend.Data.Distance
+import com.SE.backend.Data.Region
 import com.SE.backend.Data.ShowMapper
 import com.SE.backend.Data.User
 import org.springframework.web.bind.annotation.ResponseBody
@@ -21,8 +21,8 @@ class MainController {
     @GetMapping("/list", produces = ["application/json"])
     @ResponseBody
     @Throws(Exception::class)
-    fun getList(): List<Distance>{
-        return showMapper.getCityList()
+    fun getList(): List<Region>{
+        return showMapper.getCityList();
     }
 
     @GetMapping("/userInfo", produces = ["application/json"])

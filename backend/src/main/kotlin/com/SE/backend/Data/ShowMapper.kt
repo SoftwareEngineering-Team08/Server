@@ -4,6 +4,6 @@ import org.apache.ibatis.annotations.*
 
 @Mapper
 public interface ShowMapper {
-    fun getCityList(): List<Distance>
+    fun getCityList(): List<Region>
     fun getUserList(): List<User>
 }
