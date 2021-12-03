@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SE.backend.repository.ShowMapper">
+    <select id="getCityList" resultType="com.SE.backend.domain.Region">
+        SELECT * FROM region
+    </select>
+    <select id="getUserList" resultType="com.SE.backend.domain.User">
+        SELECT * FROM owner
+    </select>
+    <select id="getLogin" resultType="com.SE.backend.domain.User">
+        SELECT * FROM owner
+    </select>
+
+
+<!--    <select id="getCity" resultType="com.SE.backend.domain.Distance">-->
+<!--        SELECT * FROM distance LIMIT 1-->
+<!--    </select>-->
+<!--    <insert id="insert">-->
+<!--        INSERT INTO user (name, age, date) VALUES ('James', 22, NOW())-->
+<!--    </insert>-->
+<!--    <update id="update">-->
+<!--        UPDATE user SET age = 23-->
+<!--    </update>-->
+<!--    <delete id="delete">-->
+<!--        DELETE FROM user WHERE ![CDATA[ age > 20 ]]-->
+<!--    </delete>-->
+</mapper>
