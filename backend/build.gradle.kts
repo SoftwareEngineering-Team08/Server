@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.util.regex.Pattern.compile
 
 plugins {
 	id("org.springframework.boot") version "2.6.0"
