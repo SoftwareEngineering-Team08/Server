@@ -9,4 +9,5 @@ interface ShowMapper {
     fun getCityList(): List<Region>
     fun getUserList(): List<User>
     fun getLogin(): List<User>
+//    fun getDistanceStage(rname: String): Int
 }

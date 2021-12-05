@@ -10,6 +10,13 @@
     <select id="getLogin" resultType="com.SE.backend.domain.User">
         SELECT * FROM owner
     </select>
+<!--    <select id="getDistanceStage" parameterType="String" resultType="int">-->
+<!--        SELECT stage FROM region-->
+<!--        <if test='rname != null and rname != ""' >-->
+<!--            WHERE rname == #{rname}-->
+<!--        </if>-->
+<!--    </select>-->
+
 
 
 <!--    <select id="getCity" resultType="com.SE.backend.domain.Distance">-->
