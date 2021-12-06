@@ -4,18 +4,15 @@
     <select id="getCityList" resultType="com.SE.backend.domain.Region">
         SELECT * FROM region
     </select>
-    <select id="getUserList" resultType="com.SE.backend.domain.User">
+    <select id="getUserList" resultType="com.SE.backend.domain.DBUser">
         SELECT * FROM owner
     </select>
-    <select id="getLogin" resultType="com.SE.backend.domain.User">
-        SELECT * FROM owner
+    <select id="getLogin" resultType="com.SE.backend.domain.DBUser">
+        SELECT * FROM owner WHERE id = #{id}
     </select>
-<!--    <select id="getDistanceStage" parameterType="String" resultType="int">-->
-<!--        SELECT stage FROM region-->
-<!--        <if test='rname != null and rname != ""' >-->
-<!--            WHERE rname == #{rname}-->
-<!--        </if>-->
-<!--    </select>-->
+    <select id="getDistanceStage" resultType="Integer">
+        SELECT stage FROM region WHERE rname = #{rname}
+    </select>
 
 
 

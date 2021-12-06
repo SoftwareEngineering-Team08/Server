@@ -1,5 +1,6 @@
 package com.SE.backend.domain
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import lombok.Data
 import kotlin.properties.Delegates
 
@@ -9,8 +10,8 @@ import kotlin.properties.Delegates
 @Data
 class Region {
     var rid by Delegates.notNull<Int>()
-    lateinit var rname:String
-    var stage by Delegates.notNull<Int>()
+    lateinit var rname: String
+    var stage: Int = 0
 }
 
 

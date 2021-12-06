@@ -2,23 +2,19 @@ package com.SE.backend.domain
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import lombok.Data
-import kotlin.properties.Delegates
 
 @Data
-class User{
-    @get:JsonProperty("onum")
-    var onum by Delegates.notNull<Int>()
+class User {
     @get:JsonProperty("id")
-    lateinit var id: String
+    var id: String = ""
     @get:JsonProperty("pw")
-    lateinit var pw: String
+    var pw: String = ""
     @get:JsonProperty("oname")
-    lateinit var oname: String
+    var oname: String = ""
 
-    fun init(){
-        this.onum = 0
-        this.id = ""
-        this.pw = ""
-        this.oname = ""
+    fun set(_id:String, _pw:String, _oname: String){
+        this.id = _id
+        this.pw = _pw
+        this.oname = _oname
     }
 }

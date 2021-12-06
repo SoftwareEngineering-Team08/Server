@@ -2,10 +2,9 @@ package com.SE.backend.Controller
 
 import com.SE.backend.domain.Region
 import com.SE.backend.repository.ShowMapper
+import com.SE.backend.domain.DBUser
 import com.SE.backend.domain.User
-import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonFormat
-import com.fasterxml.jackson.annotation.JsonProperty
+import org.apache.ibatis.annotations.Param
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -25,40 +24,40 @@ class MainController {
         return showMapper.getCityList()
     }
 
-//    @PostMapping("/distance-stage", produces = ["application/json"])
-//    @ResponseBody
-//    @Throws(Exception::class)
-//    fun getDistanceStage(@RequestBody regionName: String): Int{
-//        var stage = showMapper.getDistanceStage(regionName)
-//        return stage
-//    }
+    @PostMapping("/distance-stage", produces = ["application/json"])
+    @ResponseBody
+    @Throws(Exception::class)
+    fun getDistanceStage(@RequestBody regionName: String?): Integer{
+        var stage = showMapper.getDistanceStage(regionName!!.replace("\"",""))
+        if (stage != null){
+            return stage
+        } else{
+            return Integer(0)
+        }
+    }
 
 
     @GetMapping("/userInfo", produces = ["application/json"])
     @ResponseBody
     @Throws(Exception::class)
-    fun getUserList(): List<User>{
+    fun getUserList(): List<DBUser>{
         return showMapper.getUserList()
     }
 
     @PostMapping("/login", produces = ["application/json"])
     @Throws(Exception::class)
-    fun getLogin(@RequestBody data: User): User {
-        var userList: List<User> = showMapper.getLogin()
-        for (i in userList){
-            if (data.id.equals(i.id)){
-                if (data.pw.equals(i.pw)){
-                    val userInfo:User = i
-                    return userInfo
-                } else {
-                    data.pw = ""
-                    return data
-                }
+    fun getLogin(@RequestBody data: User, @Param("id") id: String?): User {
+        val validUser: DBUser = showMapper.getLogin(data.id)
+        var androidUser = User()
+        if (validUser != null){
+            if (data.pw.equals(validUser.pw)){  // user pw 일치할 경우
+                androidUser.set(validUser.id,validUser.pw,validUser.oname)
+            } else {
+                androidUser.set(data.id,"password wrong","")
             }
+        } else {
+            androidUser.set("id invalid","","")
         }
-        data.init()
-        return data
+        return androidUser
     }
-
-
 }
