@@ -14,15 +14,21 @@ CREATE TABLE region(
 		stage INT,
 		PRIMARY KEY(rid));
 
+CREATE TABLE businessType(
+		bid INT AUTO_INCREMENT,
+		bname VARCHAR(100),
+		PRIMARY KEY(bid));
+
 CREATE TABLE shop(
 		sid INT AUTO_INCREMENT,
-		bussinessType VARCHAR(100),
+		bid INT,
 		sname VARCHAR(100),
 		rid INT,
 		maxPeople INT,
 		onum INT,
 		PRIMARY KEY(sid),
 		FOREIGN KEY (rid) references region(rid),
+		FOREIGN KEY (bid) references businessType(bid),
 		FOREIGN KEY (onum) references owner(onum) on update cascade on delete cascade);
 
 INSERT INTO region(rname, stage) VALUES ('Seoul', 3);
@@ -33,12 +39,18 @@ INSERT INTO region(rname, stage) VALUES ('Gwangju', 2);
 INSERT INTO region(rname, stage) VALUES ('Ulsan', 2);
 INSERT INTO region(rname, stage) VALUES ('Jeju', 1);
 
+INSERT INTO businessType(bname) VALUES ('HOTEL');
+INSERT INTO businessType(bname) VALUES ('ACADEMY');
+INSERT INTO businessType(bname) VALUES ('RESTAURANT');
+INSERT INTO businessType(bname) VALUES ('GYM');
+INSERT INTO businessType(bname) VALUES ('BAR');
+
 INSERT INTO owner(id, pw, oname) VALUES ('dong', '1234', 'ldh');
 INSERT INTO owner(id, pw, oname) VALUES ('oh', '1234', 'ohg');
 INSERT INTO owner(id, pw, oname) VALUES ('soo', '1234', 'cjs');
 
-INSERT INTO shop(bussinessType, sname, rid, maxPeople, onum) VALUES ('academy', 'etoos', 1, 30, 1);
-INSERT INTO shop(bussinessType, sname, rid, maxPeople, onum) VALUES ('gym', 'healchang', 3, 50, 2);
-INSERT INTO shop(bussinessType, sname, rid, maxPeople, onum) VALUES ('bar', 'Daebak', 7, 20, 2);
-INSERT INTO shop(bussinessType, sname, rid, maxPeople, onum) VALUES ('restaurant', 'Starbucks', 2, 20, 2);
+INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (2, 'etoos', 1, 30, 1);
+INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (4, 'healchang', 3, 50, 2);
+INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (5, 'Daebak', 7, 20, 2);
+INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (3, 'Starbucks', 2, 20, 2);
 
