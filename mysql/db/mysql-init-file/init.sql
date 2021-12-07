@@ -1,3 +1,6 @@
+create user 'root'@'%' identified with mysql_native_password by '1234';
+grant all privileges on *.* to 'root'@'%';
+
 CREATE DATABASE IF NOT EXISTS sogong;
 use sogong;
 
