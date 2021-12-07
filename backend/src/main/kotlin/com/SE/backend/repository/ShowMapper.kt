@@ -1,12 +1,15 @@
 package com.SE.backend.repository
 
-import com.SE.backend.domain.Region
-import com.SE.backend.domain.User
+import com.SE.backend.domain.*
 import org.apache.ibatis.annotations.*
 
 @Mapper
 interface ShowMapper {
     fun getCityList(): List<Region>
-    fun getUserList(): List<User>
-    fun getLogin(): List<User>
+    fun getUserList(): List<DBUser>
+    fun getLogin(@Param("id") id: String?): DBUser
+    fun getDistanceStage(@Param("rname") rname: String?): Integer
+    fun getShopList(@Param("id") id: String?): List<Shop>
+    fun getIdValid(@Param("id") id: String?): DBUser
+
 }

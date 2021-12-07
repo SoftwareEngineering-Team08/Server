@@ -1,3 +1,6 @@
+create user 'root'@'%' identified with mysql_native_password by '1234';
+grant all privileges on *.* to 'root'@'%';
+
 CREATE DATABASE IF NOT EXISTS sogong;
 use sogong;
 
@@ -53,4 +56,3 @@ INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (2, 'etoos', 1, 30, 1)
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (4, 'healchang', 3, 50, 2);
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (5, 'Daebak', 7, 20, 2);
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (3, 'Starbucks', 2, 20, 2);
-
