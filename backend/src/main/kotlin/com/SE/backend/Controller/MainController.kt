@@ -5,7 +5,6 @@ import com.SE.backend.repository.ShowMapper
 import com.SE.backend.domain.DBUser
 import com.SE.backend.domain.Shop
 import com.SE.backend.domain.User
-import org.apache.ibatis.annotations.Param
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*

@@ -20,4 +20,5 @@
     <select id="getIdValid"  resultType="com.SE.backend.domain.DBUser">
         SELECT * FROM owner WHERE id = #{id}
     </select>
+
 </mapper>
