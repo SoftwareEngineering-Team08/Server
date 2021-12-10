@@ -11,6 +11,10 @@ interface ShowMapper {
     fun getDistanceStage(@Param("rname") rname: String?): Integer
     fun getShopList(@Param("id") id: String?): List<Shop>
     fun getIdValid(@Param("id") id: String?): DBUser
-    fun getAddUser(@Param("id") id: String?, @Param("pw") pw: String?,
+    fun AddUser(@Param("id") id: String?, @Param("pw") pw: String?,
     @Param("oname") oname: String?)
+    fun AddShop(@Param("shop") shop: Shop?, @Param("BNP") businessProperty: Int?)
+    fun DeleteShop(@Param("sname") shopName: String?)
+    fun EditShop(@Param("shop") shop: Shop?,
+    @Param("BNP") businessProperty: Int?, @Param("oldSName") oldShopName: String)
 }

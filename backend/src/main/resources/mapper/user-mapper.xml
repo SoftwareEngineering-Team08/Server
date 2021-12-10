@@ -20,7 +20,25 @@
     <select id="getIdValid"  resultType="com.SE.backend.domain.DBUser">
         SELECT * FROM owner WHERE id = #{id}
     </select>
-    <select id="getAddUser"  >
+    <select id="AddUser"  >
         INSERT into owner (id,pw,oname) values (#{id},#{pw},#{oname})
     </select>
+    <select id="AddShop"  >
+        INSERT into shop (bid,sname,rid,maxPeople,onum) values
+        (#{BNP},#{shop.sname},
+         (SELECT rid FROM region WHERE rname = #{shop.rname}),
+         #{shop.maxPeople},
+         #{shop.onum})
+    </select>
+    <select id="DeleteShop"  >
+        DELETE FROM shop WHERE sname = #{sname}
+    </select>
+    <select id="EditShop"  >
+        UPDATE shop SET bid = #{BNP}, sname=#{shop.sname},
+        rid = (SELECT rid FROM region WHERE rname = #{shop.rname}),
+        maxPeople = #{shop.maxPeople}
+        WHERE onum = #{shop.onum} and smame = #{oldSName}
+    </select>
+
+
 </mapper>

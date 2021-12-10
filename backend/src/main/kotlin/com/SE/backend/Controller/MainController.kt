@@ -1,5 +1,6 @@
 package com.SE.backend.Controller
 
+import com.SE.backend.domain.BusinessType
 import com.SE.backend.domain.Region
 import com.SE.backend.repository.ShowMapper
 import com.SE.backend.domain.DBUser
@@ -7,7 +8,7 @@ import com.SE.backend.domain.Shop
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import java.lang.Exception
+import kotlin.Exception
 import kotlin.jvm.Throws
 
 @RestController
@@ -61,7 +62,7 @@ class MainController {
     @PostMapping("/add-user", produces = ["application/json"])
     @Throws(Exception::class)
     fun AddUser(@RequestBody data: DBUser): Boolean {
-        showMapper.getAddUser(data.id, data.pw, data.oname)
+        showMapper.AddUser(data.id, data.pw, data.oname)
         val validUser = showMapper.getIdValid(data.id)
         if (validUser != null) {
             return true
@@ -86,11 +87,49 @@ class MainController {
     @Throws(Exception::class)
     fun getShopList(@RequestBody user: DBUser?): List<Shop>{
         val shopList : List<Shop> = showMapper.getShopList(user?.id)
-        for (i in shopList){
-
-            // limit people 계산을 어떻게할지 생각해야할듯
-            i.limitPeople = i.maxPeople
-        }
         return shopList
     }
+
+    @PostMapping("/add-shop", produces = ["application/json"])
+    @ResponseBody
+    @Throws(Exception::class)
+    fun AddShop(@RequestBody shop: Shop?): Boolean{
+        val enumNum = shop!!.businessType.priority;
+        try {
+            showMapper.AddShop(shop, enumNum)
+        }catch (e: Exception){
+            println(e.toString())
+            return false
+        }
+        return true
+    }
+
+    @PostMapping("/delete-shop", produces = ["application/json"])
+    @ResponseBody
+    @Throws(Exception::class)
+    fun DeleteShop(@RequestBody shop: Shop?): Boolean{
+        try {
+            showMapper.DeleteShop(shop!!.sname)
+        }catch (e: Exception){
+            println(e.toString())
+            return false
+        }
+        return true
+    }
+
+    @PostMapping("/edit-shop", produces = ["application/json"])
+    @ResponseBody
+    @Throws(Exception::class)
+    fun EditShop(@RequestBody shopInfo: Map<String, Shop>): Boolean{
+        try {
+            val shop: Shop = shopInfo.values.first()
+            val enumNum = shop.businessType.priority;
+            showMapper.EditShop(shop, enumNum, shopInfo.keys.first())
+        }catch (e: Exception){
+            println(e.toString())
+            return false
+        }
+        return true
+    }
+
 }
