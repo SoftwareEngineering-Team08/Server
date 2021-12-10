@@ -1,10 +1,7 @@
 package com.SE.backend.Controller
 
-import com.SE.backend.domain.BusinessType
-import com.SE.backend.domain.Region
+import com.SE.backend.domain.*
 import com.SE.backend.repository.ShowMapper
-import com.SE.backend.domain.DBUser
-import com.SE.backend.domain.Shop
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -130,6 +127,14 @@ class MainController {
             return false
         }
         return true
+    }
+
+    @PostMapping("/statistic", produces = ["application/json"])
+    @ResponseBody
+    @Throws(Exception::class)
+    fun getStatistic(@RequestBody shop: Shop): List<Trial>{
+        val trialInfo = showMapper.getStatistic(shop.sid)
+        return trialInfo
     }
 
 }
