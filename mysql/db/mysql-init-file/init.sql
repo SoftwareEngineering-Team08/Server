@@ -34,6 +34,12 @@ CREATE TABLE shop(
 		FOREIGN KEY (bid) references businessType(bid),
 		FOREIGN KEY (onum) references owner(onum) on update cascade on delete cascade);
 
+CREATE TABLE trial(
+		tid INT AUTO_INCREMENT,
+		sum INT, 
+		sid INT,
+		FOREIGN KEY (sid) references shop(sid) on update cascade on delete cascade);
+
 INSERT INTO region(rname, stage) VALUES ('Seoul', 3);
 INSERT INTO region(rname, stage) VALUES ('Daejeon', 3);
 INSERT INTO region(rname, stage) VALUES ('Daegu', 2);
@@ -60,3 +66,10 @@ INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (1, 'jisooTel', 4, 100
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (2, 'jiCademy', 1, 30, 3);
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (3, 'jisTaurant', 2, 100, 3);
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (4, 'jiBAR', 5, 100, 3);
+
+INSERT INTO trial(sum, sid) VALUES (10, 1);
+INSERT INTO trial(sum, sid) VALUES (32, 2);
+INSERT INTO trial(sum, sid) VALUES (4, 3);
+INSERT INTO trial(sum, sid) VALUES (27, 4);
+INSERT INTO trial(sum, sid) VALUES (60, 2);
+INSERT INTO trial(sum, sid) VALUES (1, 1);
