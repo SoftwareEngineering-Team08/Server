@@ -37,7 +37,7 @@
         UPDATE shop SET bid = #{BNP}, sname=#{shop.sname},
         rid = (SELECT rid FROM region WHERE rname = #{shop.rname}),
         maxPeople = #{shop.maxPeople}
-        WHERE onum = #{shop.onum} and smame = #{oldSName}
+        WHERE onum = #{shop.onum} and sid = #{oldSid}
     </select>
 
 
