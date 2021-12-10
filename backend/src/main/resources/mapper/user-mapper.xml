@@ -13,19 +13,12 @@
     <select id="getDistanceStage" resultType="Integer">
         SELECT stage FROM region WHERE rname = #{rname}
     </select>
+    <select id="getShopList" resultType="com.SE.backend.domain.Shop">
+        SELECT shop.*, region.rname as rname, businessType.bname as businessType FROM shop, region, businessType WHERE onum =
+        (SELECT onum FROM owner WHERE id = #{id}) AND region.rid = shop.rid AND businessType.bid = shop.bid;
+    </select>
+    <select id="getIdValid"  resultType="com.SE.backend.domain.DBUser">
+        SELECT * FROM owner WHERE id = #{id}
+    </select>
 
-
-
-<!--    <select id="getCity" resultType="com.SE.backend.domain.Distance">-->
-<!--        SELECT * FROM distance LIMIT 1-->
-<!--    </select>-->
-<!--    <insert id="insert">-->
-<!--        INSERT INTO user (name, age, date) VALUES ('James', 22, NOW())-->
-<!--    </insert>-->
-<!--    <update id="update">-->
-<!--        UPDATE user SET age = 23-->
-<!--    </update>-->
-<!--    <delete id="delete">-->
-<!--        DELETE FROM user WHERE ![CDATA[ age > 20 ]]-->
-<!--    </delete>-->
 </mapper>
