@@ -20,5 +20,7 @@
     <select id="getIdValid"  resultType="com.SE.backend.domain.DBUser">
         SELECT * FROM owner WHERE id = #{id}
     </select>
-
+    <select id="getAddUser"  >
+        INSERT into owner (id,pw,oname) values (#{id},#{pw},#{oname})
+    </select>
 </mapper>
