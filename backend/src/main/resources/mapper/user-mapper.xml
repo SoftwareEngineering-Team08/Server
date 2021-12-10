@@ -39,7 +39,7 @@
         maxPeople = #{shop.maxPeople}
         WHERE onum = #{shop.onum} and sid = #{oldSid}
     </select>
-    <select id="getStatistic"  >
+    <select id="getStatistic"  resultType="com.SE.backend.domain.Trial">
         SELECT * FROM trial WHERE sid = #{sid}
     </select>
 
