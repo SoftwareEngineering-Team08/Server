@@ -39,6 +39,9 @@
         maxPeople = #{shop.maxPeople}
         WHERE onum = #{shop.onum} and sid = #{oldSid}
     </select>
+    <select id="getStatistic"  >
+        SELECT * FROM trial WHERE sid = #{sid}
+    </select>
 
 
 </mapper>
