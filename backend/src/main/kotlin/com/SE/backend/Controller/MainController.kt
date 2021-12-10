@@ -122,7 +122,7 @@ class MainController {
     @Throws(Exception::class)
     fun EditShop(@RequestBody shopInfo: Map<String, Shop>): Boolean{
         try {
-            val shop: Shop = shopInfo.values.first()
+            val shop: Shop = shopInfo.values.first()    // shop sid
             val enumNum = shop.businessType.priority;
             showMapper.EditShop(shop, enumNum, shopInfo.keys.first())
         }catch (e: Exception){

@@ -16,5 +16,5 @@ interface ShowMapper {
     fun AddShop(@Param("shop") shop: Shop?, @Param("BNP") businessProperty: Int?)
     fun DeleteShop(@Param("sname") shopName: String?)
     fun EditShop(@Param("shop") shop: Shop?,
-    @Param("BNP") businessProperty: Int?, @Param("oldSName") oldShopName: String)
+    @Param("BNP") businessProperty: Int?, @Param("oldSid") ShopId: String)
 }
