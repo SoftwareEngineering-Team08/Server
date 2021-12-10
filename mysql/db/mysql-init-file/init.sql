@@ -56,3 +56,7 @@ INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (2, 'etoos', 1, 30, 1)
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (4, 'healchang', 3, 50, 2);
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (5, 'Daebak', 7, 20, 2);
 INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (3, 'Starbucks', 2, 20, 2);
+INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (1, 'jisooTel', 4, 100, 3);
+INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (2, 'jiCademy', 1, 30, 3);
+INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (3, 'jisTaurant', 2, 100, 3);
+INSERT INTO shop(bid, sname, rid, maxPeople, onum) VALUES (4, 'jiBAR', 5, 100, 3);
