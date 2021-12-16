@@ -18,4 +18,6 @@ interface ShowMapper {
     fun EditShop(@Param("shop") shop: Shop?,
     @Param("BNP") businessProperty: Int?, @Param("oldSid") ShopId: String)
     fun getStatistic(@Param("sid") shopSid: String): List<Trial>
+    fun AddCountNumber(@Param("trial") trial: Trial)
+
 }
