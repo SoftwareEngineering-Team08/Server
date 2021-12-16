@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import kotlin.Exception
 import kotlin.jvm.Throws
+import kotlin.properties.Delegates
 
 @RestController
 class MainController {
@@ -135,6 +136,23 @@ class MainController {
     fun getStatistic(@RequestBody shop: Shop): List<Trial>{
         val trialInfo = showMapper.getStatistic(shop.sid)
         return trialInfo
+    }
+
+    @PostMapping("/addCountInfo", produces = ["application/json"])
+    @ResponseBody
+    @Throws(Exception::class)
+    fun AddCountInfo(@RequestBody trial: Trial): Boolean {
+        var returnBoolean by Delegates.notNull<Boolean>()
+        try {
+            val AddCountNumber = showMapper.AddCountNumber(trial)
+            if (AddCountNumber != null){
+                returnBoolean = true
+            } else
+                returnBoolean = false
+        } catch (e: Exception){
+            println(e.toString())
+        }
+        return returnBoolean
     }
 
 }

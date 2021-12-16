@@ -42,6 +42,9 @@
     <select id="getStatistic"  resultType="com.SE.backend.domain.Trial">
         SELECT * FROM trial WHERE sid = #{sid}
     </select>
+    <select id="AddCountNumber"  resultType="com.SE.backend.domain.Trial">
+        INSERT INTO trial (tnum,sid) values(#{trial.tnum} , #{trial.sid})
+    </select>
 
 
 </mapper>
